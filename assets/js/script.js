@@ -1,14 +1,5 @@
-// --- from kayla's rapidAPI account --- 
-fetch("https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=37.783366%2C-122.402325&language=en&radius=150&type=cafe", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "9b836ebcfamsh9bd18d25f72ad34p19e628jsn460c57bf97e3",
-		"x-rapidapi-host": "trueway-places.p.rapidapi.com"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
+// fetch all places with the type restaurant, with a keyword red, within a 60 mile radius of orlando
+fetch('https://api.allorigins.win/raw?url=' +  
+encodeURIComponent('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=28.5383,-81.3792&radius=100000&type=restaurant&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo'))
+.then(res => res.json())
+.then(console.log);
