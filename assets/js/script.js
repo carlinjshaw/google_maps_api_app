@@ -9,6 +9,8 @@
 
 function placesApi(lat, lon) {
   console.log(lat, lon);
+  var currentLat = lat
+  var currentLon = lon
   fetch(
     "https://api.allorigins.win/raw?url=" +
       encodeURIComponent(
@@ -23,22 +25,28 @@ function placesApi(lat, lon) {
     if (response.ok) {
       response.json().then(function (data) {
         console.log(data);
-
+  
+        
         var searchResults = data.results[Math.floor(Math.random() * data.results.length)];
         console.log(searchResults)
+        
+        var locationLat = searchResults.geometry.location.lat
+        var locationLng = searchResults.geometry.location.lng
+        
+        distanceMatrixApi(locationLat, locationLng, currentLat, currentLon)
       });
     }
   });
 }
 
-function distanceMatrixApi() {
+function distanceMatrixApi(lat, lng, userLat, userLon) {
   fetch(
     "https://api.allorigins.win/raw?url=" +
       encodeURIComponent(
         "https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBjep3oamseN_xrez7jazTRvj92qBnDqFI&origins=" +
-          "40.6655101,-73.89188969999998" +
-          "&destinations=" +
-          "40.6905615%2C-73.9976592"
+          userLat + "," + userLon
+          + "&destinations=" 
+          + lat + "," + lng
       )
   ).then(function (response) {
     if (response.ok) {
@@ -74,7 +82,7 @@ if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(function (response) {
     console.log(response);
     placesApi(response.coords.latitude, response.coords.longitude);
-  });
+  }); 
 }
 // }
 
