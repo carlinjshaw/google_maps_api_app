@@ -3,70 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width='device-width', initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Chop and Shop</title>
+    <title>Geographic Randomizer</title>
   </head>
 
   <body>
+    <!-- Nav Bar -->
+    <nav class="nav-wrapper blue darken-2">
+      <div class="container">
+        <a class="brand-logo">Geographic Randomizer</a>
+        <!-- Links -->
+        <ul class="right">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Saved Places</a></li>
+        </ul>
+      </div>
+    </nav>
+    
     <main>
-      <header class="z-depth-5">
-        <h1>Chop and Shop</h1>
-      </header>
+      <!-- CONTENT LIST -->
+      <!-- ABOUT THIS WEBSITE BOX -->
+      <!-- Ready to start? Pick your options below *Drop down menus, or 2 radio button sections -->
+      <!-- Card for MAP -->
+      <!-- Card for RANDOMIZED PLACE -->
+      <!-- Gutter Card for SAVED PLACES -->
+      <!-- Footer -->
 
-      <div class="txtArea">
-        <textarea>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi neque ullam error, aut eveniet, autem cum velit vitae, dicta magni aperiam!
-        </textarea>
+      <!-- ABOUT -->
+      <div class="container">
+        <p>Looking for a place to eat? Tired of the same grocery stores?</p>
       </div>
 
-      <div class="button">
-        <button>Search</button>
-        <button>Save</button>
+      <!-- READY TO START? -->
+      <div class="container">
+        <p>Ready to begin?</p>
       </div>
 
-      <div class="row" id="infoContainer">
-        <div class="col s6 z-depth-5" id="searchResult">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto esse
-          sint id reiciendis adipisci! Repellat quos voluptatem natus aperiam
-          asperiores consequuntur laborum minus, tempora, quae ullam vitae
-          officiis eaque praesentium. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Fuga, molestias veniam officia illo magnam illum
-          iusto itaque rem, doloremque esse quisquam omnis, amet vel dicta
-          labore tenetur? Consectetur, odio. Dolores. Lorem ipsum dolor, sit
-          amet consectetur adipisicing elit. Rem aliquid a officiis voluptatibus
-          deleniti quae nostrum, earum maiores iure blanditiis quis dolorem
-          dicta vero? Reprehenderit minus quibusdam quo commodi labore!
-        </div>
+      <!-- MAP & RANDOM PLACE Container-->
+      <div class="container">
+        <div class="row">
+          <!-- Map Card -->
+          <div class="col s6">
+            <div class="card">
+              <div class="card-content">
+                <h4>Map Here</h4>
+                <p>Map Map Map</p>
+              </div>
+            </div>
+          </div>
 
-        <div class="col s6 z-depth-5" id="searchResult">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto esse
-          sint id reiciendis adipisci! Repellat quos voluptatem natus aperiam
-          asperiores consequuntur laborum minus, tempora, quae ullam vitae
-          officiis eaque praesentium. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Fuga, molestias veniam officia illo magnam illum
-          iusto itaque rem, doloremque esse quisquam omnis, amet vel dicta
-          labore tenetur? Consectetur, odio. Dolores. Lorem ipsum dolor, sit
-          amet consectetur adipisicing elit. Rem aliquid a officiis voluptatibus
-          deleniti quae nostrum, earum maiores iure blanditiis quis dolorem
-          dicta vero? Reprehenderit minus quibusdam quo commodi labore!
+          <!-- Restaurant/Store Card -->
+          <div class="col s6">
+            <div class="card">
+              <div class="card-content">
+                <h4>Random Place Here</h4>
+                <img src="/" />
+                <p>Address: 1234 UCF Strt. Orlando, FL 32806</p>
+                <p>Status: Open/Closed</p>
+                <p>Distance: 2 miles</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
 
-    <footer class="z-depth-5">
-      <div class="col s12" id="searchHistory">Recent Search History</div>
+    <footer class="page-footer blue darken-2">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2021 Copyright Text
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
     </footer>
     
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
