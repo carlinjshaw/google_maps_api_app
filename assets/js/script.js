@@ -1,10 +1,17 @@
 var userLocation = {};
+// DOM Elements
+var placeNameEl = document.querySelector("#place-name");
+var imgEl = document.querySelector("#img-el");
+var addressEl = document.querySelector("#address");
+var distanceEl = document.querySelector("#distance");
+var mapHeaderEl = document.querySelector("#map-header");
+var mapEl = document.querySelector("#map-content");
+var storedPlacesEl = document.querySelector("#storage-row");
 
 //user location
 $("#location-btn").on("click", function (e) {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function (response) {
-        //  placesApi(response.coords.latitude, response.coords.longitude);
         userLocation.lat = response.coords.latitude;
         userLocation.lon = response.coords.longitude;
     });
@@ -19,7 +26,7 @@ $("#submit").on("click", function (e) {
     var userMethod = $("input:radio[name=travel-method]:checked").val();
     var userDestination = $("input:radio[name=location-type]:checked").val();
 
-        // package variables to send 
+    // package variables to send 
     var userLat = userLocation.lat;
     var userLon = userLocation.lon;
     placesApi(userDistance, userMethod, userDestination, userLat, userLon);
@@ -82,6 +89,9 @@ function distanceMatrixApi(locationLat, locationLng, userLat, userLon, userMetho
 });
 }
 
-
+// Need: Function to print data to page
+//       Function to reset page content for next click
+//       Function to save places to local storage 
+//       Function to remove places from local storage
 
 //data.rows[0].elements[0].distance (use to compare to make sure the response returned is within distance parameters)
