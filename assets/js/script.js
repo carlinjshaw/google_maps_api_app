@@ -1,13 +1,16 @@
+var userLocation = {};
+
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(function (response) {
-  placesApi(response.coords.latitude, response.coords.longitude);
-    // userLocation.push(response.coords.latitude)
-    });
-  }
-  // console.log(userLocation)
-  
+    //  placesApi(response.coords.latitude, response.coords.longitude);
+    userLocation.lat = response.coords.latitude;
+    userLocation.lon = response.coords.longitude;
+  });
+  console.log(userLocation);
+}
+
 function placesApi(lat, lon) {
-  console.log(lat, lon);
+  console.log(userLocation.lat, userLocation.lon);
   var currentLat = lat;
   var currentLon = lon;
   fetch(
