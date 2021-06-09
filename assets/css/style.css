@@ -4,3 +4,6 @@
   box-sizing: border-box;
 }
 
+#submit, #location-btn {
+  width: 100%;
+}

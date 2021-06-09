@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Geographic Randomizer</title>
   </head>
+    <!-- CONTENT LIST -->
+    <!-- ABOUT THIS WEBSITE BOX -->
+    <!-- Ready to start? Pick your options below *Drop down menus, or 2 radio button sections -->
+    <!-- Card for MAP -->
+    <!-- Card for RANDOMIZED PLACE -->
+    <!-- Gutter Card for SAVED PLACES -->
+    <!-- Footer -->
 
   <body>
     <!-- Nav Bar -->
@@ -27,51 +34,115 @@
     </nav>
     
     <main>
-      <!-- CONTENT LIST -->
-      <!-- ABOUT THIS WEBSITE BOX -->
-      <!-- Ready to start? Pick your options below *Drop down menus, or 2 radio button sections -->
-      <!-- Card for MAP -->
-      <!-- Card for RANDOMIZED PLACE -->
-      <!-- Gutter Card for SAVED PLACES -->
-      <!-- Footer -->
-
       <!-- ABOUT -->
       <div class="container">
         <h4 class="indigo-text text-darken-3">Need a place to eat?</h4>
-        <p>Looking for a place to eat? Tired of the same grocery stores?</p>
+        <p><span class="flow-text">Can't decide?</span> Know how far you want to drive? Pick a random place around you below! </p>
+        <h4 class="indigo-text text-darken-3">Let's Begin</h4>
       </div>
 
-      <!-- READY TO START? -->
-      <div class="container">
-        <p>Ready to begin?</p>
-        <!-- Add input option for *use location* or *enter address* -->
-        
-      </div>
-
-      <!-- tutorial form -->
+      <!-- READY TO START? Form -->
       <section class="section container" id="contact">
         <div class="row">
-          <div class="col s12 l5">
-            <h4 class="indigo-text text-darken-3">Let's Begin</h4>
-            <p>Blahasdasdnlasd</p>
+          <!-- Left Column -->
+          <div class="col s12 l4">
+
+            <!-- Location button -->
+            <div class="input-field">
+              <button class="btn" id="location-btn">Use My Location</button>
+            </div>
+
+            <p> OR </p>
+          <br/>
+            <!-- ask for user location OR enter address-->
+            <div class="input-field">
+              <textarea id="address" class="materialize-textarea" placeholder="123 Street St. City, St 12345"></textarea>
+              <label for="address">Enter an Address:</label>
+            </div>
+
+            
           </div>
 
-          <div class="col s12 l5 offset-l2">
-            <form action="">
-              <!-- ask for user location OR enter address-->
-
-              <div class="input-field">
-                <textarea id="address" class="materialize-textarea"></textarea>
-                <label for="address">Enter an Address:</label>
+          <!-- Right Column of columns for radio buttons-->
+          <div class="col s12 l6 offset-l2">
+            <div class="row">
+              <!-- Travel Distance -->
+              <div class="col s4">
+                <form>
+                <p>
+                  <label>
+                    <input class="with-gap" name="distance" type="radio" data-miles="3" value="3" checked />
+                    <span>3 Miles</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="distance" type="radio" data-miles="5" value="5"/>
+                    <span>5 miles</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="distance" type="radio" data-miles="10" value="10" />
+                    <span>10 miles</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="distance" type="radio" data-miles="20" value="20" />
+                    <span>20 miles</span>
+                  </label>
+                </p>
+              </form>
+              </div>
+              <!-- Travel Type -->
+              <div class="col s4">
+              <form>
+                <p>
+                  <label>
+                    <input class="with-gap" name="travel-method" type="radio" data-travel="driving" value="driving" checked />
+                    <span>Driving</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="travel-method" type="radio" data-travel="walking" value="walking"/>
+                    <span>Walking</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="travel-method" type="radio" data-travel="bicycling" value="bicycling" />
+                    <span>Bicycling</span>
+                  </label>
+                </p>
+              </form>
+              </div>
+              <!-- Location Type -->
+              <div class="col s4">
+                <form>
+                <p>
+                  <label>
+                    <input class="with-gap" name="location-type" type="radio" data-type="restaurant" value="restaurant" checked />
+                    <span>Restaurant</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="location-type" type="radio"  data-type="point-of-interest" value="point-of-interest"/>
+                    <span>Point-of-interest</span>
+                  </label>
+                </p>
+              </form>
               </div>
 
-              <!-- radio buttons for form -->
-
-
+            </div>
+              
+              <!-- Submit button -->
               <div class="input-field">
-                <button class="btn">Submit</button>
+                <button class="btn" type="button" id="submit">Submit</button>
               </div>
-            </form>
+
           </div>
         </div>
       </section>
