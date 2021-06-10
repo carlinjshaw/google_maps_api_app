@@ -21,7 +21,7 @@
 
   <body>
     <!-- Nav Bar -->
-    <nav class="nav-wrapper blue darken-2">
+    <nav class="nav-wrapper teal ">
       <div class="container">
         <a class="brand-logo">Geographic Randomizer</a>
         <!-- Links -->
@@ -35,19 +35,23 @@
     <main>
       <!-- ABOUT Container -->
       <div class="container">
-        <h4 class="blue-text text-darken-3">Need a place to eat?</h4>
-        <p><span class="flow-text ">Can't decide?</span> Know how far you want to drive? Randomize a place below!</p>
-        <h4 class="blue-text text-darken-3">Let's Begin</h4>
+        <h1 class="blue-text text-darken-2">Traveling somewhere new and don't know what to do?</h1>
+        <blockquote>
+        <p>Can't decide? Know how far you want to drive?</p>
+        <p>Use your current location or enter an address to randomize a place below!</p>
+      </blockquote>
+        <h2 class="grey-text begin-head">Choose your adventure below</h2>
+      
       </div>
 
       <!-- Two Content Cards To Return Results -->
       <section class="section container" id="contact">
         <div class="row">
           <!-- Left Column -->
-          <div class="col s12 l4">
+          <div class="col s12 l5">
             <!-- Location button -->
             <div class="input-field">
-              <button class="btn waves-effect waves-light" id="location-btn">Use My Location</button>
+              <button class="btn waves-effect waves-light blue darken-2" id="location-btn">Use My Location</button>
             </div>
             <p> OR </p>
 
@@ -59,7 +63,7 @@
           </div>
 
           <!-- Right Column of columns for radio buttons-->
-          <div class="col s12 l7 offset-l1">
+          <div class="col s12 l6 offset-l1">
             <div class="row">
               <!-- Travel Distance -->
               <div class="col s4">
@@ -141,7 +145,7 @@
               
               <!-- Submit button -->
               <div class="input-field">
-                <button class="btn waves-effect waves-light" type="button" id="submit">Submit</button>
+                <button class="btn waves-effect waves-light blue darken-2" type="button" id="submit">Submit</button>
               </div>
 
           </div>
@@ -151,24 +155,23 @@
 
       <!-- MAP & RANDOM PLACE Container-->
       <div class="container">
-        <div class="row">
+        <div class="row flex">
           <!-- Map Card -->
-          <div class="col s6">
+          <div class="col s5 valign-wrapper">
             <div class="card">
               <div class="card-content">
-                <h4 id="map-header"></h4>
-                <div id="map-content"><img src="https://maps.googleapis.com/maps/api/staticmap?center=28.5241908,-81.3289289&amp;zoom=11&amp;size=400x400&amp;maptype=roadmap&amp;markers=color:green%7Clabel:Start%7C28.5241908,-81.3289289&amp;markers=color:red%7Clabel:Finish%7C28.5113721,-81.3748813&amp;key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"></div>
+                <div id="map-content"><img src="https://maps.googleapis.com/maps/api/staticmap?center=28.5241908,-81.3289289&amp;zoom=11&amp;size=480x480&amp;maptype=roadmap&amp;markers=color:green%7Clabel:Start%7C28.5241908,-81.3289289&amp;markers=color:red%7Clabel:Finish%7C28.5113721,-81.3748813&amp;key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"></div>
                 <div></div>
               </div>
             </div>
           </div>
 
           <!-- Randomized Place Card -->
-          <div class="col s6">
+          <div class="col s6 offset-l1">
             <div class="card">
               <div class="card-content place-content">
                 <h4 class="center-align" id="place-name">Fill out the form for a place!</h4>
-                <img id="img-el" src="/" />
+                <!--<img id="img-el" src="/" /> -->
                 <!--- Table for info --->
                 <table>
                   <tbody>
@@ -190,6 +193,9 @@
                     </tr>
                   </tbody>
                 </table>
+                <div class="input-field">
+                  <button class="btn waves-effect waves-light blue accent-1" type="button" id="save-btn">Save Place</button>
+                </div>
                 <!-------------->
               </div>
             </div>
@@ -211,23 +217,18 @@
     <footer class="page-footer blue darken-2">
       <div class="container">
         <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">GitHub 1</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">GitHub 2</a></li>
-            </ul>
-          </div>
+            <h5 class="white-text">Geographic Randomizer</h5>
         </div>
       </div>
+
       <div class="footer-copyright">
         <div class="container">
-        © 2021 Copyright UCF Students
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        © 2021 This website is made for student/educational purposes only.
+        <a class="grey-text text-lighten-4 right" href="#!">Shaeon </a>
+        <a class="grey-text text-lighten-4 right" href="#!">Kayla</a>
+        <a class="grey-text text-lighten-4 right" href="#!">Carlin </a>
+        <a class="grey-text text-lighten-4 right" href="#!">Owen </a>
+        <a class="grey-text text-lighten-4 right" href="#!">Austin </a>
         </div>
       </div>
     </footer>
