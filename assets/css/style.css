@@ -4,6 +4,31 @@
   box-sizing: border-box;
 }
 
-#submit, #location-btn {
+#submit, #location-btn, #save-btn {
   width: 100%;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+blockquote {
+  border-color: #26a69a;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+footer a {
+  margin: 0 1rem;
+}
+
+h5 {
+  margin: 0;
 }
