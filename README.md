@@ -19,3 +19,9 @@ WHEN I select a past location
 THEN I am presented with distance and drive time information again
 
 
+Geographic Randomizer
+
+This Application was created as a group project by Team Technical Difficulties. The valued team members are: Owen Dupree, Kayla Dombrosky, Shaeon Adams, Carlin Shaw, and Austin Swebilius. This application was made with the Google Distance Matrix API, Google Places API, and Google Static Map API. The CSS was completed using Materialize, and Jquery.
+
+The purpose of our application is to give User's the ability select either their location pr input an address then select their method of travel and the distance they want to travel. The map will then update to center on their location. 
+
