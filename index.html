@@ -33,33 +33,29 @@
     </nav>
     
     <main>
-      <!-- ABOUT -->
+      <!-- ABOUT Container -->
       <div class="container">
-        <h4 class="indigo-text text-darken-3">Need a place to eat?</h4>
-        <p><span class="flow-text">Can't decide?</span> Know how far you want to drive? Pick a random place around you below! </p>
-        <h4 class="indigo-text text-darken-3">Let's Begin</h4>
+        <h4 class="blue-text text-darken-3">Need a place to eat?</h4>
+        <p><span class="flow-text ">Can't decide?</span> Know how far you want to drive? Randomize a place below!</p>
+        <h4 class="blue-text text-darken-3">Let's Begin</h4>
       </div>
 
-      <!-- READY TO START? Form -->
+      <!-- Two Content Cards To Return Results -->
       <section class="section container" id="contact">
         <div class="row">
           <!-- Left Column -->
           <div class="col s12 l4">
-
             <!-- Location button -->
             <div class="input-field">
-              <button class="btn" id="location-btn">Use My Location</button>
+              <button class="btn waves-effect waves-light" id="location-btn">Use My Location</button>
             </div>
-
             <p> OR </p>
-          <br/>
+
             <!-- ask for user location OR enter address-->
             <div class="input-field">
               <textarea id="address" class="materialize-textarea" placeholder="123 Street St. City, St 12345"></textarea>
               <label for="address">Enter an Address:</label>
             </div>
-
-            
           </div>
 
           <!-- Right Column of columns for radio buttons-->
@@ -70,25 +66,19 @@
                 <form>
                 <p>
                   <label>
-                    <input class="with-gap" name="distance" type="radio" data-miles="3" value="3" checked />
-                    <span>3 Miles</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input class="with-gap" name="distance" type="radio" data-miles="5" value="5"/>
+                    <input class="with-gap" name="distance" type="radio" value="8046.72" checked />
                     <span>5 miles</span>
                   </label>
                 </p>
                 <p>
                   <label>
-                    <input class="with-gap" name="distance" type="radio" data-miles="10" value="10" />
+                    <input class="with-gap" name="distance" type="radio" value="16093.4" />
                     <span>10 miles</span>
                   </label>
                 </p>
                 <p>
                   <label>
-                    <input class="with-gap" name="distance" type="radio" data-miles="20" value="20" />
+                    <input class="with-gap" name="distance" type="radio" value="32186.9" />
                     <span>20 miles</span>
                   </label>
                 </p>
@@ -132,6 +122,18 @@
                     <span>Point-of-interest</span>
                   </label>
                 </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="location-type" type="radio"  data-type="food" value="food"/>
+                    <span>Food</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="location-type" type="radio"  data-type="meal-takeaway" value="meal-takeaway"/>
+                    <span>Meal-Takeaway</span>
+                  </label>
+                </p>
               </form>
               </div>
 
@@ -139,7 +141,7 @@
               
               <!-- Submit button -->
               <div class="input-field">
-                <button class="btn" type="button" id="submit">Submit</button>
+                <button class="btn waves-effect waves-light" type="button" id="submit">Submit</button>
               </div>
 
           </div>
@@ -154,26 +156,60 @@
           <div class="col s6">
             <div class="card">
               <div class="card-content">
+<<<<<<< HEAD
                 <h4>Map Here</h4>
                 <div id="map"></div>
+=======
+                <h4 id="map-header">Map Here</h4>
+                <p id="map-content">Map Map Map</p>
+                <div></div>
+>>>>>>> fd3f4ea3b07bd65fda4ddd1e95d24c64d3ba5c97
               </div>
             </div>
           </div>
 
-          <!-- Restaurant/Store Card -->
+          <!-- Randomized Place Card -->
           <div class="col s6">
             <div class="card">
-              <div class="card-content">
-                <h4>Random Place Here</h4>
-                <img src="/" />
-                <p>Address: 1234 UCF Strt. Orlando, FL 32806</p>
-                <p>Status: Open/Closed</p>
-                <p>Distance: 2 miles</p>
+              <div class="card-content place-content">
+                <h4 class="center-align" id="place-name">Random Place Here</h4>
+                <img id="img-el" src="/" />
+                <!--- Table for info --->
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Address: </td>
+                      <td id="address-el"></td>
+                    </tr>
+                    <tr>
+                      <td>Distance: </td>
+                      <td><span id="distance"></span></td>
+                    </tr>
+                    <tr>
+                      <td>Travel Time: </td>
+                      <td><span id="travel-time"></span></td>
+                    </tr>
+                    <tr>
+                      <td>Status: </td>
+                      <td id="status-el"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-------------->
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="container">
+        <div class="card-panel row blue-grey lighten-4" id="storage-row">
+          <p>Row of: smaller image of place + name OR small card with name and distance</p>
+          <br/>
+          <p>content content content</p>
+        </div>
+      </div>
+
 
     </main>
 
