@@ -40,7 +40,6 @@ var fetchStatic = function(originLat, originLon, zoomValue, destinationLat, dest
 	"&zoom=" + zoomValue +"&size=400x400&maptype=roadmap&markers=color:green%7Clabel:Start%7C" + originLat + "," + originLon + 
 	"&markers=color:red%7Clabel:Finish%7C" + destinationLat + "," + destinationLon + "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"
 }
-fetchStatic()
 
 
 
@@ -81,7 +80,7 @@ function distanceMatrixApi(locationLat, locationLng, userLat, userLon, userMetho
             distance: data.rows[0].elements[0].distance.text,
             time: data.rows[0].elements[0].duration.text
         }
-
+        
         displayContent(placeObject, infObject);
     });
     }
