@@ -122,6 +122,18 @@
                     <span>Point-of-interest</span>
                   </label>
                 </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="location-type" type="radio"  data-type="food" value="food"/>
+                    <span>Food</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input class="with-gap" name="location-type" type="radio"  data-type="meal-takeaway" value="meal-takeaway"/>
+                    <span>Meal-Takeaway</span>
+                  </label>
+                </p>
               </form>
               </div>
 
@@ -146,6 +158,7 @@
               <div class="card-content">
                 <h4 id="map-header">Map Here</h4>
                 <p id="map-content">Map Map Map</p>
+                <div></div>
               </div>
             </div>
           </div>
@@ -154,12 +167,30 @@
           <div class="col s6">
             <div class="card">
               <div class="card-content place-content">
-                <h4 id="place-name">Random Place Here</h4>
+                <h4 class="center-align" id="place-name">Random Place Here</h4>
                 <img id="img-el" src="/" />
-                <p>Address: <span id="address"></span></p>
-                <p>Distance: <span id="distance"></span> miles</p>
-                <p>Travel Time: <span id="travel-time"></span> minutes EST</p>
-                <p>Status: Open/Closed</p>
+                <!--- Table for info --->
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Address: </td>
+                      <td id="address-el"></td>
+                    </tr>
+                    <tr>
+                      <td>Distance: </td>
+                      <td><span id="distance"></span></td>
+                    </tr>
+                    <tr>
+                      <td>Travel Time: </td>
+                      <td><span id="travel-time"></span></td>
+                    </tr>
+                    <tr>
+                      <td>Status: </td>
+                      <td id="status-el"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-------------->
               </div>
             </div>
           </div>
@@ -167,7 +198,7 @@
       </div>
 
       <div class="container">
-        <div class="card-panel row grey lighten-2" id="storage-row">
+        <div class="card-panel row blue-grey lighten-4" id="storage-row">
           <p>Row of: smaller image of place + name OR small card with name and distance</p>
           <br/>
           <p>content content content</p>
