@@ -11,18 +11,11 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Geographic Randomizer</title>
   </head>
-    <!-- CONTENT LIST -->
-    <!-- ABOUT THIS WEBSITE BOX -->
-    <!-- Ready to start? Pick your options below *Drop down menus, or 2 radio button sections -->
-    <!-- Card for MAP -->
-    <!-- Card for RANDOMIZED PLACE -->
-    <!-- Gutter Card for SAVED PLACES -->
-    <!-- Footer -->
 
   <body class="grey lighten-5">
     <!-- Nav Bar -->
     <div class="navbar-fixed">
-    <nav class="nav-wrapper teal" id="home">
+    <nav class="nav-wrapper teal" >
       <div class="container">
         <a class="brand-logo">Geographic Randomizer</a>
         <!-- Links -->
@@ -34,16 +27,15 @@
     </nav>
     </div>
     
-    <main>
+    <main >
       <!-- ABOUT Container -->
       <div class="container">
-        <h1 class="blue-text text-darken-2">Traveling somewhere new and don't know what to do?</h1>
+        <h1 class="blue-text text-darken-2" id="home">Traveling somewhere new and don't know what to do?</h1>
         <blockquote>
         <p>Can't decide? Know how far you want to drive?</p>
         <p>Use your current location or enter an address to randomize a place below!</p>
       </blockquote>
         <h2 class="grey-text begin-head">Choose your adventure below</h2>
-      
       </div>
 
       <!-- Two Content Cards To Return Results -->
@@ -172,9 +164,15 @@
           <div class="col s6 offset-l1">
             <div class="card">
               <div class="card-content place-content">
-                <h4 class="center-align" id="place-name">Fill out the form for a place!</h4>
+                <div class="card-image">
+                  <h4 class="center-align" id="place-name">Fill out the form for a place!</h4>
+                  <a class="btn-floating halfway-fab waves-effect waves-light teal"><i class="large material-icons">local_dining</i></a>
+                </div>
+                
+                
                 <!--<img id="img-el" src="/" /> -->
                 <!--- Table for info --->
+                
                 <table>
                   <tbody>
                     <tr>
@@ -205,14 +203,22 @@
         </div>
       </div>
 
+      <!-- LOCAL STORAGE CONTAINER -->
       <div class="container">
         <div class="card-panel row blue-grey lighten-4" id="storage-row">
-          <p>Row of: smaller image of place + name OR small card with name and distance</p>
-          <br/>
-          <p>content content content</p>
+            <!-- Dynamically add local storage card here -->
+            <div class="col s2">
+              <div class="card blue-grey">
+                <div class="card-content white-text">
+                  <span class="card-title">Place Name</span>
+                  <i class="material-icons">add</i>
+                  <p>1422 Fettler Way, Winter Garden FL 32787</p>
+                </div>
+              </div>
+            </div>
+
         </div>
       </div>
-
 
     </main>
 
@@ -226,11 +232,11 @@
       <div class="footer-copyright">
         <div class="container">
         © 2021 This website is made for student & educational purposes only.
-        <a class="grey-text text-lighten-4 right" href="#!">Shaeon </a>
-        <a class="grey-text text-lighten-4 right" href="#!">Kayla</a>
-        <a class="grey-text text-lighten-4 right" href="#!">Carlin </a>
-        <a class="grey-text text-lighten-4 right" href="#!">Owen </a>
-        <a class="grey-text text-lighten-4 right" href="#!">Austin </a>
+        <a class="grey-text text-lighten-4 right" href="#!">Shaeon Adams</a>
+        <a class="grey-text text-lighten-4 right" href="#!">Kayla Dombrosky</a>
+        <a class="grey-text text-lighten-4 right" href="#!">Carlin Shaw</a>
+        <a class="grey-text text-lighten-4 right" href="#!">Owen Dupree</a>
+        <a class="grey-text text-lighten-4 right" href="#!">Austin Awebilius</a>
         </div>
       </div>
     </footer>

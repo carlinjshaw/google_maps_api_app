@@ -123,8 +123,6 @@ function distanceMatrixApi(locationLat, locationLng, userLat, userLon, userMetho
         savedUserInput.push(storedObj);
         updateLocalStorage("history", JSON.stringify(savedUserInput));
 
-        fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng);
-
 		// get map and display content
 		fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng)
         displayContent(placeObject, infObject);
@@ -213,3 +211,9 @@ $("#submit").on("click", function (e) {
 $("#save-btn").on("click", function(e) {
     // save to local storage! 
 })
+
+
+//storedPlacesEl. 
+
+var outerCard = document.createElement("div"); 
+outerCard.className = ""
