@@ -1,3 +1,4 @@
+var savedUserInput = []
 var userLocation = {};
 // DOM Elements
 var placeNameEl = document.querySelector("#place-name");
@@ -10,6 +11,9 @@ var mapHeaderEl = document.querySelector("#map-header");
 var mapEl = document.querySelector("#map-content");
 var storedPlacesEl = document.querySelector("#storage-row");
 
+function updateLocalStorage (key, data) {
+    localStorage.setItem(key, data);
+}
 
 // function to display content to page
 var displayContent = function(placeObject, infObject) {
@@ -80,6 +84,13 @@ zoomValue = 11;
 		} else {
 			zoomValue = 10;
 		}
+        var storedObj = {
+            name: placeObject.name,
+            address: placeObject.address,
+            distance: infObject.distance
+        }
+        savedUserInput.push(storedObj)
+        updateLocalStorage("history", JSON.stringify(savedUserInput));
 		
 		fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng)
 
