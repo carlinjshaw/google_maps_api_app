@@ -39,8 +39,9 @@ var fetchStatic = function(originLat, originLon, zoomValue, destinationLat, dest
     var staticUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + originLat + "," + originLon + 
 	"&zoom=" + zoomValue +"&size=400x400&maptype=roadmap&markers=color:green%7Clabel:Start%7C" + originLat + "," + originLon + 
 	"&markers=color:red%7Clabel:Finish%7C" + destinationLat + "," + destinationLon + "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"
+	console.log(staticUrl)
 }
-fetchStatic()
+
 
 
 
@@ -81,6 +82,15 @@ function distanceMatrixApi(locationLat, locationLng, userLat, userLon, userMetho
             distance: data.rows[0].elements[0].distance.text,
             time: data.rows[0].elements[0].duration.text
         }
+		var zoomValue = ""
+		var randomVar = parseInt(infObject.distance);
+		if (randomVar <= 5){
+zoomValue = 11;
+		} else {
+			zoomValue = 10;
+		}
+		
+		fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng)
 
         displayContent(placeObject, infObject);
     });
