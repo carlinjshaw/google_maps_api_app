@@ -31,6 +31,7 @@ var fetchStatic = function(originLat, originLon, zoomValue, destinationLat, dest
 	"&zoom=" + zoomValue +"&size=400x400&maptype=roadmap&markers=color:green%7Clabel:Start%7C" + originLat + "," + originLon + 
 	"&markers=color:red%7Clabel:Finish%7C" + destinationLat + "," + destinationLon + "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"
 	console.log(staticUrl)
+mapEl.innerHTML = "<img src='"  + staticUrl + "'/ >"; 
 }
 
 
