@@ -59,10 +59,13 @@ var displayContent = function (placeObject, infObject) {
     console.log(placeObject.type);
     if(placeObject.type === "restaurant") {
         iconEl.innerText = "local_dining";
+        if(iconEl.classList.contains("red-text")) {
+            iconEl.classList.remove("red-text");
+        }
     }
     if(placeObject.type === "point-of-interest") {
         iconEl.innerText = "room";
-        iconEl.className = "large material-icons red-text"
+        iconEl.classList.add("red-text");
     }
 };
 
