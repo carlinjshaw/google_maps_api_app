@@ -13,17 +13,30 @@ var storedPlacesEl = document.querySelector("#storage-row");
 
 function updateLocalStorage(key, data) {
     localStorage.setItem(key, data);
+    
+    //savedUserInput = [];
+    console.log(filteredHistory);
 }
 
-function checkHistory() {
-    var localHistory = localStorage.getItem("history");
-    if (localHistory != null) {
-    locationHistory = JSON.parse(localHistory);
-    console.log(localHistory);
-    return true;
-    }
-    return false;
-}
+// LOCAL STORAGE function
+// function checkStorage(key, savedUserInput, storedObj) {
+//     var localHistory = localStorage.getItem("history");
+//     if (localHistory != null) {
+//     locationHistory = JSON.parse(localHistory);
+//     console.log(localHistory);
+//     return true;
+//     }
+//     else {
+//         localHistory = [];
+//     }
+
+//     localHistory.push(storedObj);
+//     console.log(localHistory);
+
+//     localStorage.setItem("history",  JSON.stringify(localHistory));
+//     console.log("we made it");
+//     console.log(localStorage);
+// }
 
 // function to display content to page
 var displayContent = function (placeObject, infObject) {
@@ -47,7 +60,7 @@ var fetchStatic = function (
     destinationLon
 ) {
     var staticUrl =
-    "https://maps.googleapis.com/maps/api/staticmap?center=" +
+    "https://maps.googleapis.com/maps/api/staticmap?center=" + 
     originLat +
     "," +
     originLon +
@@ -115,13 +128,28 @@ function distanceMatrixApi(locationLat, locationLng, userLat, userLon, userMetho
             zoomValue = 10;
             }
 
-            var storedObj = {
-            name: placeObject.name,
-            address: placeObject.address,
-            distance: infObject.distance,
-            };
-        savedUserInput.push(storedObj);
-        updateLocalStorage("history", JSON.stringify(savedUserInput));
+            // name: placeObject.name,
+                // address: placeObject.address,
+                // distance: infObject.distance,
+                // method: userMethod
+                //};
+
+            // on click save btn to update local storage
+            $("#save-btn").on("click", function(e) {
+                // save to local storage! 
+                var storedObj = {};
+                storedObj.name = placeObject.name; 
+                storedObj.address = placeObject.address;
+                storedObj.distance = infObject.distance;
+                storedObj.method = userMethod;
+
+                savedUserInput.push(storedObj);
+                updateLocalStorage("history", JSON.stringify(savedUserInput));
+            })
+            
+
+        // savedUserInput.push(storedObj);
+        // updateLocalStorage("history", JSON.stringify(savedUserInput));
 
 		// get map and display content
 		fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng)
@@ -164,9 +192,11 @@ function placesApi(
             name: randomResults.name,
             id: randomResults.place_id,
             address: randomResults.vicinity,
-            photo: randomResults.photos[0].photo_reference,
-            status: randomResults.opening_hours.open_now,
+            //photo: randomResults.photos[0].photo_reference,
+            status: randomResults.opening_hours.open_now
         };
+
+        
         // send photo ref to get photo
         //photoFetch(placeObject.photo);
 
@@ -207,13 +237,27 @@ $("#submit").on("click", function (e) {
     placesApi(userDistance, userMethod, userDestination, userLat, userLon);
 });
 
-// on click save btn 
-$("#save-btn").on("click", function(e) {
-    // save to local storage! 
-})
 
 
-//storedPlacesEl. 
 
 var outerCard = document.createElement("div"); 
-outerCard.className = ""
+outerCard.className = "col s2"; 
+var secondCard = document.createElement("div");
+secondCard.className = "card blue-grey"; 
+var thirdCard = document.createElement("div");
+thirdCard.className = "card-content white-text"; 
+var cardTitle = document.createElement("span");
+cardTitle.className = "card-title"; 
+cardTitle.innerText = "Card Header";
+var cardIcon = document.createElement("i"); 
+cardIcon.className = "material-icons";
+cardIcon.innerHTML = "add";
+var cardAddress = document.createElement("p"); 
+cardAddress.innerHTML = "1422 Fettler Way, Winter Garden FL 32787"; 
+
+thirdCard.appendChild(cardTitle);
+thirdCard.appendChild(cardIcon);
+thirdCard.appendChild(cardAddress);
+secondCard.appendChild(thirdCard);
+outerCard.appendChild(secondCard);
+storedPlacesEl.appendChild(outerCard);
