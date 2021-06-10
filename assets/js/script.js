@@ -1,13 +1,3 @@
-
-var fetchStatic = function(originLat, originLon, zoomValue, destinationLat, destinationLon) {
-    var staticUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + originLat + "," + originLon + 
-	"&zoom=" + zoomValue +"&size=400x400&maptype=roadmap&markers=color:green%7Clabel:Start%7C" + originLat + "," + originLon + 
-	"&markers=color:red%7Clabel:Finish%7C" + destinationLat + "," + destinationLon + "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"
-}
-fetchStatic()
-
-
-
 var userLocation = {};
 // DOM Elements
 var placeNameEl = document.querySelector("#place-name");
@@ -27,6 +17,7 @@ var displayContent = function(placeObject, infObject) {
     addressEl.innerText = placeObject.address; 
     distanceEl.innerText = infObject.distance;
     timeEl.innerText = infObject.time;
+
     if(placeObject.status) {
         statusEl.innerText = "Open Now";
     } else {
@@ -39,9 +30,8 @@ var fetchStatic = function(originLat, originLon, zoomValue, destinationLat, dest
     var staticUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + originLat + "," + originLon + 
 	"&zoom=" + zoomValue +"&size=400x400&maptype=roadmap&markers=color:green%7Clabel:Start%7C" + originLat + "," + originLon + 
 	"&markers=color:red%7Clabel:Finish%7C" + destinationLat + "," + destinationLon + "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"
+	console.log(staticUrl)
 }
-
-
 
 
 // fetch photo from places 
@@ -76,11 +66,23 @@ function distanceMatrixApi(locationLat, locationLng, userLat, userLon, userMetho
     if (response.ok) {
         response.json().then(function (data) {
         console.log(data);
+        // set distance matrix data into object
         var infObject = {
             distance: data.rows[0].elements[0].distance.text,
             time: data.rows[0].elements[0].duration.text
         }
-        
+
+        // change zoom value depending on distance
+		var zoomValue = ""
+		var randomVar = parseInt(infObject.distance);
+		if (randomVar <= 5){
+            zoomValue = 11;
+		} else {
+			zoomValue = 10;
+		}
+
+		// get map and display content
+		fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng)
         displayContent(placeObject, infObject);
     });
     }
@@ -148,10 +150,3 @@ $("#submit").on("click", function (e) {
     var userLon = userLocation.lon;
     placesApi(userDistance, userMethod, userDestination, userLat, userLon);
 });
-
-// Need: Function to print data to page
-//       Function to reset page content for next click
-//       Function to save places to local storage 
-//       Function to remove places from local storage
-
-//data.rows[0].elements[0].distance (use to compare to make sure the response returned is within distance parameters)
