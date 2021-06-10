@@ -25,3 +25,6 @@ This Application was created as a group project by Team Technical Difficulties. 
 
 The purpose of our application is to give User's the ability select either their location pr input an address then select their method of travel and the distance they want to travel. The map will then update to center on their location. 
 
+Link to live application:  
+
+![image](https://user-images.githubusercontent.com/82618604/121559286-73f38e00-c9e4-11eb-8a71-593ccadb1936.png)
