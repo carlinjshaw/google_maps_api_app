@@ -25,6 +25,26 @@ function checkHistory() {
   return false;
 }
 
+// LOCAL STORAGE function
+// function checkStorage(key, savedUserInput, storedObj) {
+//     var localHistory = localStorage.getItem("history");
+//     if (localHistory != null) {
+//     locationHistory = JSON.parse(localHistory);
+//     console.log(localHistory);
+//     return true;
+//     }
+//     else {
+//         localHistory = [];
+//     }
+
+//     localHistory.push(storedObj);
+//     console.log(localHistory);
+
+//     localStorage.setItem("history",  JSON.stringify(localHistory));
+//     console.log("we made it");
+//     console.log(localStorage);
+// }
+
 // function to display content to page
 var displayContent = function (placeObject, infObject) {
   placeNameEl.innerHTML = placeObject.name;
@@ -129,18 +149,23 @@ function distanceMatrixApi(
           } else {
             zoomValue = 10;
           }
+          
+            // on click save btn to update local storage
+            $("#save-btn").on("click", function(e) {
+                // save to local storage! 
+                var storedObj = {};
+                storedObj.name = placeObject.name; 
+                storedObj.address = placeObject.address;
+                storedObj.distance = infObject.distance;
+                storedObj.method = userMethod;
 
-          // $("#address").text(data.origin_addresses[0]);
+                savedUserInput.push(storedObj);
+                updateLocalStorage("history", JSON.stringify(savedUserInput));
+            })
+            
 
-          var storedObj = {
-            name: placeObject.name,
-            address: placeObject.address,
-            distance: infObject.distance,
-          };
-          savedUserInput.push(storedObj);
-          updateLocalStorage("history", JSON.stringify(savedUserInput));
-
-          fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng);
+        // savedUserInput.push(storedObj);
+        // updateLocalStorage("history", JSON.stringify(savedUserInput));
 
           // get map and display content
           fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng);
@@ -163,22 +188,21 @@ function placesApi(
   userLat,
   userLon
 ) {
-  fetch(
-    "https://api.allorigins.win/raw?url=" +
-      encodeURIComponent(
-        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
-          userLat +
-          "," +
-          userLon +
-          "&radius=" +
-          userDistance +
-          "&type=" +
-          userDestination +
-          "&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo"
-      )
-  )
-    .then(function (response) {
-      if (response.ok) {
+    fetch(
+        "https://api.allorigins.win/raw?url=" +
+        encodeURIComponent(
+            "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+            userLat +
+            "," +
+            userLon +
+            "&radius=" +
+            userDistance +
+            "&type=" +
+            userDestination +
+            "&opennow=true&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo"
+        )
+    ).then(function (response) {
+    if (response.ok) {
         response.json().then(function (data) {
           var randomResults =
             data.results[Math.floor(Math.random() * data.results.length)];
@@ -189,11 +213,13 @@ function placesApi(
             name: randomResults.name,
             id: randomResults.place_id,
             address: randomResults.vicinity,
-            photo: randomResults.photos[0].photo_reference,
-            status: randomResults.opening_hours.open_now,
-          };
-          // send photo ref to get photo
-          //photoFetch(placeObject.photo);
+            //photo: randomResults.photos[0].photo_reference,
+            status: randomResults.opening_hours.open_now
+        };
+
+        
+        // send photo ref to get photo
+        //photoFetch(placeObject.photo);
 
           var locationLat = randomResults.geometry.location.lat;
           var locationLng = randomResults.geometry.location.lng;
@@ -262,7 +288,27 @@ $("#submit").on("click", function (e) {
   placesApi(userDistance, userMethod, userDestination, userLat, userLon);
 });
 
-// on click save btn
-$("#save-btn").on("click", function (e) {
-  // save to local storage!
-});
+
+
+
+var outerCard = document.createElement("div"); 
+outerCard.className = "col s2"; 
+var secondCard = document.createElement("div");
+secondCard.className = "card blue-grey"; 
+var thirdCard = document.createElement("div");
+thirdCard.className = "card-content white-text"; 
+var cardTitle = document.createElement("span");
+cardTitle.className = "card-title"; 
+cardTitle.innerText = "Card Header";
+var cardIcon = document.createElement("i"); 
+cardIcon.className = "material-icons";
+cardIcon.innerHTML = "add";
+var cardAddress = document.createElement("p"); 
+cardAddress.innerHTML = "1422 Fettler Way, Winter Garden FL 32787"; 
+
+thirdCard.appendChild(cardTitle);
+thirdCard.appendChild(cardIcon);
+thirdCard.appendChild(cardAddress);
+secondCard.appendChild(thirdCard);
+outerCard.appendChild(secondCard);
+storedPlacesEl.appendChild(outerCard);
