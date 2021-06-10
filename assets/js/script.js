@@ -13,7 +13,7 @@ var storedPlacesEl = document.querySelector("#storage-row");
 
 function updateLocalStorage(key, data) {
     localStorage.setItem(key, data);
-    
+
     //savedUserInput = [];
     console.log(filteredHistory);
 }
@@ -178,7 +178,7 @@ function placesApi(
             userDistance +
             "&type=" +
             userDestination +
-            "&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo"
+            "&opennow=true&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo"
         )
     ).then(function (response) {
     if (response.ok) {
