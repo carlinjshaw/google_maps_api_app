@@ -32,8 +32,8 @@
       <div class="container">
         <h1 class="blue-text text-darken-2" id="home">Traveling somewhere new and don't know what to do?</h1>
         <blockquote>
-        <p>Can't decide? Know how far you want to drive?</p>
-        <p>Use your current location or enter an address to randomize a place below!</p>
+        <p>Can't decide on a place? Neither can your friends? </p>
+        <p>Use your current location below to randomize a spot! </p>
       </blockquote>
         <h2 class="grey-text begin-head">Choose your adventure below</h2>
       </div>
@@ -120,18 +120,6 @@
                     <span>Point-of-interest</span>
                   </label>
                 </p>
-                <p>
-                  <label>
-                    <input class="with-gap" name="location-type" type="radio"  data-type="food" value="food"/>
-                    <span>Food</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input class="with-gap" name="location-type" type="radio"  data-type="meal-takeaway" value="meal-takeaway"/>
-                    <span>Meal-Takeaway</span>
-                  </label>
-                </p>
               </form>
               </div>
 
@@ -166,7 +154,7 @@
               <div class="card-content place-content">
                 <div class="card-image">
                   <h4 class="center-align" id="place-name">Fill out the form for a place!</h4>
-                  <div class="center-align"><i class="large material-icons">local_dining</i></div>
+                  <div class="center-align"><i class="large material-icons" id="place-icon">add</i></div>
                 </div>
                 
                 
@@ -192,8 +180,10 @@
                   </tbody>
                 </table>
                 <div class="input-field">
+                  <br/>
                   <button class="btn waves-effect waves-light blue accent-1" type="button" id="save-btn">Save Place</button>
                 </div>
+                
                 <!-------------->
               </div>
             </div>
