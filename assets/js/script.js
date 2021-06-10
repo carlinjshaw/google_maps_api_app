@@ -7,8 +7,8 @@ var addressEl = document.querySelector("#address-el");
 var distanceEl = document.querySelector("#distance");
 var timeEl = document.querySelector("#travel-time");
 var statusEl = document.querySelector("#status-el");
-var mapHeaderEl = document.querySelector("#map-header");
 var mapEl = document.querySelector("#map-content");
+var iconEl = document.querySelector("#place-icon")
 var storedPlacesEl = document.querySelector("#storage-row");
 
 function updateLocalStorage(key, data) {
@@ -55,7 +55,15 @@ var displayContent = function (placeObject, infObject) {
     statusEl.innerText = "Open Now";
   } else {
     statusEl.innerText = "Closed";
-  }
+    }
+    console.log(placeObject.type);
+    if(placeObject.type === "restaurant") {
+        iconEl.innerText = "local_dining";
+    }
+    if(placeObject.type === "point-of-interest") {
+        iconEl.innerText = "room";
+        iconEl.className = "large material-icons red-text"
+    }
 };
 
 // display map
@@ -214,7 +222,8 @@ function placesApi(
             id: randomResults.place_id,
             address: randomResults.vicinity,
             //photo: randomResults.photos[0].photo_reference,
-            status: randomResults.opening_hours.open_now
+            status: randomResults.opening_hours.open_now,
+            type: userDestination
         };
 
         
