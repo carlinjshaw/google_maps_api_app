@@ -4,3 +4,6 @@
   box-sizing: border-box;
 }
 
+#map {
+  height: 240px;
+}
