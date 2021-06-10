@@ -1,3 +1,13 @@
+
+var fetchStatic = function(originLat, originLon, zoomValue, destinationLat, destinationLon) {
+    var staticUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + originLat + "," + originLon + 
+	"&zoom=" + zoomValue +"&size=400x400&maptype=roadmap&markers=color:green%7Clabel:Start%7C" + originLat + "," + originLon + 
+	"&markers=color:red%7Clabel:Finish%7C" + destinationLat + "," + destinationLon + "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"
+}
+fetchStatic()
+
+
+
 var userLocation = {};
 // DOM Elements
 var placeNameEl = document.querySelector("#place-name");
@@ -25,18 +35,15 @@ var displayContent = function(placeObject, infObject) {
 }
 
 // display map
-var displayMap = function() {
-    fetch("https://api.allorigins.win/raw?url=" +
-    encodeURIComponent("https://maps.googleapis.com/maps/api/staticmap?center=Lake Eola Orlando Florida&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C28.560805,-81.44245&markers=color:green%7Clabel:G%7C28.428611,-81.308611&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"
-    )).then(function(response) {
-        if(response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-            })
-        }
-    })
+var fetchStatic = function(originLat, originLon, zoomValue, destinationLat, destinationLon) {
+    var staticUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + originLat + "," + originLon + 
+	"&zoom=" + zoomValue +"&size=400x400&maptype=roadmap&markers=color:green%7Clabel:Start%7C" + originLat + "," + originLon + 
+	"&markers=color:red%7Clabel:Finish%7C" + destinationLat + "," + destinationLon + "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"
 }
-//displayMap();
+fetchStatic()
+
+
+
 
 // fetch photo from places 
 var photoFetch = function(photoRef) {
@@ -149,4 +156,3 @@ $("#submit").on("click", function (e) {
 //       Function to remove places from local storage
 
 //data.rows[0].elements[0].distance (use to compare to make sure the response returned is within distance parameters)
-
