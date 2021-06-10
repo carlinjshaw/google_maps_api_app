@@ -12,41 +12,41 @@ var mapEl = document.querySelector("#map-content");
 var storedPlacesEl = document.querySelector("#storage-row");
 
 function updateLocalStorage(key, data) {
-    localStorage.setItem(key, data);
+  localStorage.setItem(key, data);
 }
 
 function checkHistory() {
-    var localHistory = localStorage.getItem("history");
-    if (localHistory != null) {
+  var localHistory = localStorage.getItem("history");
+  if (localHistory != null) {
     locationHistory = JSON.parse(localHistory);
     console.log(localHistory);
     return true;
-    }
-    return false;
+  }
+  return false;
 }
 
 // function to display content to page
 var displayContent = function (placeObject, infObject) {
-    placeNameEl.innerHTML = placeObject.name;
-    addressEl.innerText = placeObject.address;
-    distanceEl.innerText = infObject.distance;
-    timeEl.innerText = infObject.time;
-    if (placeObject.status) {
+  placeNameEl.innerHTML = placeObject.name;
+  addressEl.innerText = placeObject.address;
+  distanceEl.innerText = infObject.distance;
+  timeEl.innerText = infObject.time;
+  if (placeObject.status) {
     statusEl.innerText = "Open Now";
-    } else {
+  } else {
     statusEl.innerText = "Closed";
-    }
+  }
 };
 
 // display map
 var fetchStatic = function (
-    originLat,
-    originLon,
-    zoomValue,
-    destinationLat,
-    destinationLon
+  originLat,
+  originLon,
+  zoomValue,
+  destinationLat,
+  destinationLon
 ) {
-    var staticUrl =
+  var staticUrl =
     "https://maps.googleapis.com/maps/api/staticmap?center=" +
     originLat +
     "," +
@@ -62,154 +62,207 @@ var fetchStatic = function (
     "," +
     destinationLon +
     "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg";
-    console.log(staticUrl);
-    mapEl.innerHTML = "<img src='" + staticUrl + "'/ >";
+  console.log(staticUrl);
+  mapEl.innerHTML = "<img src='" + staticUrl + "'/ >";
 };
 
 // fetch photo from places
-var photoFetch = function (photoRef) {
-    fetch("https://api.allorigins.win/raw?url=" +
-        encodeURIComponent(
-        "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" +
-        "CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU" +
-        "&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo"
-        )
-    ).then(function (response) {
-    console.log(response);
-    response.json().then(function (data) {
-        console.log(data);
-    });
-    });
-};
+// var photoFetch = function (photoRef) {
+//   fetch(
+//     "https://api.allorigins.win/raw?url=" +
+//       encodeURIComponent(
+//         "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" +
+//           "CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU" +
+//           "&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo"
+//       )
+//   )
+//     .then(function (response) {
+//       if (response.ok) {
+//         response.json().then(function (data) {
+//           console.log(data);
+//         });
+//       } else {
+//         alert("Error: " + response.statusText);
+//       }
+//     })
+//     .catch(function (error) {
+//       alert("Unable to connect");
+//     });
+// };
 
 // DISTANCE MATRIX API
-function distanceMatrixApi(locationLat, locationLng, userLat, userLon, userMethod, placeObject) {
-    fetch(
-        "https://api.allorigins.win/raw?url=" +
-        encodeURIComponent(
-            "https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBjep3oamseN_xrez7jazTRvj92qBnDqFI&units=imperial&origins=" +
-            userLat +
-            "," +
-            userLon +
-            "&destinations=" +
-            locationLat +
-            "," +
-            locationLng +
-            "&mode=" +
-            userMethod
-        )
-    ).then(function (response) {
-        if (response.ok) {
+function distanceMatrixApi(
+  locationLat,
+  locationLng,
+  userLat,
+  userLon,
+  userMethod,
+  placeObject
+) {
+  fetch(
+    "https://api.allorigins.win/raw?url=" +
+      encodeURIComponent(
+        "https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBjep3oamseN_xrez7jazTRvj92qBnDqFI&units=imperial&origins=" +
+          userLat +
+          "," +
+          userLon +
+          "&destinations=" +
+          locationLat +
+          "," +
+          locationLng +
+          "&mode=" +
+          userMethod
+      )
+  )
+    .then(function (response) {
+      if (response.ok) {
         response.json().then(function (data) {
-            console.log(data);
-            // set distance matrix data into object
-            var infObject = {
+          // set distance matrix data into object
+          var infObject = {
             distance: data.rows[0].elements[0].distance.text,
             time: data.rows[0].elements[0].duration.text,
-            };
-            var zoomValue = "";
-            var randomVar = parseInt(infObject.distance);
-            if (randomVar <= 5) {
+          };
+          var zoomValue = "";
+          var randomVar = parseInt(infObject.distance);
+          if (randomVar <= 5) {
             zoomValue = 11;
-            } else {
+          } else {
             zoomValue = 10;
-            }
+          }
 
-            var storedObj = {
+          // $("#address").text(data.origin_addresses[0]);
+
+          var storedObj = {
             name: placeObject.name,
             address: placeObject.address,
             distance: infObject.distance,
-            };
-        savedUserInput.push(storedObj);
-        updateLocalStorage("history", JSON.stringify(savedUserInput));
+          };
+          savedUserInput.push(storedObj);
+          updateLocalStorage("history", JSON.stringify(savedUserInput));
 
-        fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng);
+          fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng);
 
-		// get map and display content
-		fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng)
-        displayContent(placeObject, infObject);
+          // get map and display content
+          fetchStatic(userLat, userLon, zoomValue, locationLat, locationLng);
+          displayContent(placeObject, infObject);
         });
-    }
+      } else {
+        alert("Error: " + response.statusText);
+      }
+    })
+    .catch(function (error) {
+      alert("Unable to connect");
     });
 }
 
 // PLACES API Function
 function placesApi(
-    userDistance,
-    userMethod,
-    userDestination,
-    userLat,
-    userLon
+  userDistance,
+  userMethod,
+  userDestination,
+  userLat,
+  userLon
 ) {
-    fetch(
-        "https://api.allorigins.win/raw?url=" +
-        encodeURIComponent(
-            "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
-            userLat +
-            "," +
-            userLon +
-            "&radius=" +
-            userDistance +
-            "&type=" +
-            userDestination +
-            "&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo"
-        )
-    ).then(function (response) {
-    if (response.ok) {
+  fetch(
+    "https://api.allorigins.win/raw?url=" +
+      encodeURIComponent(
+        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+          userLat +
+          "," +
+          userLon +
+          "&radius=" +
+          userDistance +
+          "&type=" +
+          userDestination +
+          "&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo"
+      )
+  )
+    .then(function (response) {
+      if (response.ok) {
         response.json().then(function (data) {
-        var randomResults =
-          data.results[Math.floor(Math.random() * data.results.length)];
-        console.log(randomResults);
+          var randomResults =
+            data.results[Math.floor(Math.random() * data.results.length)];
+          console.log(randomResults);
 
-        // create obj to send to distanceMatrix()
-        var placeObject = {
+          // create obj to send to distanceMatrix()
+          var placeObject = {
             name: randomResults.name,
             id: randomResults.place_id,
             address: randomResults.vicinity,
             photo: randomResults.photos[0].photo_reference,
             status: randomResults.opening_hours.open_now,
-        };
-        // send photo ref to get photo
-        //photoFetch(placeObject.photo);
+          };
+          // send photo ref to get photo
+          //photoFetch(placeObject.photo);
 
-        var locationLat = randomResults.geometry.location.lat;
-        var locationLng = randomResults.geometry.location.lng;
-        distanceMatrixApi(
+          var locationLat = randomResults.geometry.location.lat;
+          var locationLng = randomResults.geometry.location.lng;
+          distanceMatrixApi(
             locationLat,
             locationLng,
             userLat,
             userLon,
             userMethod,
             placeObject
-        );
+          );
         });
-    }
+      } else {
+        alert("Error: " + response.statusText);
+      }
+    })
+    .catch(function (error) {
+      alert("Unable to connect");
     });
 }
 
 //user location
 $("#location-btn").on("click", function (e) {
-    if ("geolocation" in navigator) {
+  if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function (response) {
-        userLocation.lat = response.coords.latitude;
-        userLocation.lon = response.coords.longitude;
+      userLocation.lat = response.coords.latitude;
+      userLocation.lon = response.coords.longitude;
+      fetch(
+        "https://api.allorigins.win/raw?url=" +
+          encodeURIComponent(
+            "https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBjep3oamseN_xrez7jazTRvj92qBnDqFI&units=imperial&origins=" +
+              userLocation.lat +
+              "," +
+              userLocation.lon +
+              "&destinations=" +
+              userLocation.lat +
+              "," +
+              userLocation.lon
+          )
+      )
+        .then(function (response) {
+          if (response.ok) {
+            response.json().then(function (data) {
+              $("#address").text(data.origin_addresses[0]);
+            });
+          } else {
+            alert("Error: " + response.statusText);
+          }
+        })
+        .catch(function (error) {
+          alert("Unable to connect");
+        });
     });
-}
+  }
 });
 
 //on click function to gather user data
 $("#submit").on("click", function (e) {
-    var userDistance = $("input:radio[name=distance]:checked").val();
-    var userMethod = $("input:radio[name=travel-method]:checked").val();
-    var userDestination = $("input:radio[name=location-type]:checked").val();
+  var userDistance = $("input:radio[name=distance]:checked").val();
+  var userMethod = $("input:radio[name=travel-method]:checked").val();
+  var userDestination = $("input:radio[name=location-type]:checked").val();
 
   // package variables to send
-    var userLat = userLocation.lat;
-    var userLon = userLocation.lon;
-    placesApi(userDistance, userMethod, userDestination, userLat, userLon);
+  var userLat = userLocation.lat;
+  var userLon = userLocation.lon;
+  placesApi(userDistance, userMethod, userDestination, userLat, userLon);
 });
 
-// on click save btn 
-$("#save-btn").on("click", function(e) {
-    // save to local storage! 
-})
+// on click save btn
+$("#save-btn").on("click", function (e) {
+  // save to local storage!
+});
