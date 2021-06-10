@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 #map {
   height: 240px;
 }
+=======
+#submit, #location-btn {
+  width: 100%;
+}
+>>>>>>> 248fe97317a44f2c1c5538db33377c0a7b77018b
