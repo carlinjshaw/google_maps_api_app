@@ -247,7 +247,7 @@ $("#submit").on("click", function (e) {
 });
 
 var outerCard = document.createElement("div");
-outerCard.className = "col s2";
+outerCard.className = "col xl2 l6 m12 s12";
 var secondCard = document.createElement("div");
 secondCard.className = "card blue-grey";
 var thirdCard = document.createElement("div");
