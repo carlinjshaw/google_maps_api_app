@@ -10,7 +10,7 @@
   width: 100%;
 }
 
-.justify-content{
+.justify-content {
   align-content: center;
   justify-content: center;
 }
@@ -40,8 +40,6 @@ h5 {
   margin: 0;
 }
 
-@media screen and(max-width: 1024px) {
-  nav{
-    position: sticky;
-  }
+.brand-logo {
+  width: fit-content;
 }

@@ -5,8 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Geographic Randomizer</title>
@@ -15,32 +21,38 @@
   <body class="grey lighten-5">
     <!-- Nav Bar -->
     <div class="navbar-fixed">
-    <nav class="nav-wrapper teal" >
-      <div class="container">
-        <a href="#!" class="brand-logo">Geographic Randomizer</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <!-- Links -->
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#storage-row">Saved Places</a></li>
-        </ul>
-        <ul class="sidenav" id="mobile-demo">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#storage-row">Saved Places</a></li>
-        </ul>
-      </div>
-    </nav>
+      <nav class="nav-wrapper teal">
+        <div class="container">
+          <a class="brand-logo">Geographic Randomizer</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+            ><i class="material-icons">menu</i></a
+          >
+          <!-- Links -->
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#storage-row">Saved Places</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
-    
-    <main >
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#storage-row">Saved Places</a></li>
+    </ul>
+
+    <main>
       <!-- ABOUT Container -->
       <div class="container">
-        <h1 class="blue-text text-darken-2" id="home">Traveling somewhere new and don't know what to do?</h1>
+        <h1 class="blue-text text-darken-2" id="home">
+          Traveling somewhere new and don't know what to do?
+        </h1>
         <blockquote>
-        <p>Can't decide on a place? Neither can your friends? </p>
-        <p>Use your current location below to randomize a spot! </p>
-      </blockquote>
-        <h2 class="grey-text begin-head">Find a spot below<i class="small material-icons">arrow_downward</i></h2>
+          <p>Can't decide on a place? Neither can your friends?</p>
+          <p>Use your current location below to randomize a spot!</p>
+        </blockquote>
+        <h2 class="grey-text begin-head">
+          Find a spot below<i class="small material-icons">arrow_downward</i>
+        </h2>
       </div>
 
       <!-- Two Content Cards To Return Results -->
@@ -50,13 +62,22 @@
           <div class="col s12 l5">
             <!-- Location button -->
             <div class="input-field">
-              <button class="btn waves-effect waves-light blue darken-2" id="location-btn">Use My Location</button>
+              <button
+                class="btn waves-effect waves-light blue darken-2"
+                id="location-btn"
+              >
+                Use My Location
+              </button>
             </div>
             <br />
 
             <!-- ask for user location OR enter address-->
             <div class="input-field">
-              <textarea id="address" class="materialize-textarea" placeholder="123 Street St. City, St 12345"></textarea>
+              <textarea
+                id="address"
+                class="materialize-textarea"
+                placeholder="123 Street St. City, St 12345"
+              ></textarea>
               <label for="address">Your Address:</label>
             </div>
           </div>
@@ -67,78 +88,129 @@
               <!-- Travel Distance -->
               <div class="col s4">
                 <form>
-                <p>
-                  <label>
-                    <input class="with-gap" name="distance" type="radio" value="8046.72" checked />
-                    <span>5 miles</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input class="with-gap" name="distance" type="radio" value="16093.4" />
-                    <span>10 miles</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input class="with-gap" name="distance" type="radio" value="32186.9" />
-                    <span>20 miles</span>
-                  </label>
-                </p>
-              </form>
+                  <p>
+                    <label>
+                      <input
+                        class="with-gap"
+                        name="distance"
+                        type="radio"
+                        value="8046.72"
+                        checked
+                      />
+                      <span>5 miles</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input
+                        class="with-gap"
+                        name="distance"
+                        type="radio"
+                        value="16093.4"
+                      />
+                      <span>10 miles</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input
+                        class="with-gap"
+                        name="distance"
+                        type="radio"
+                        value="32186.9"
+                      />
+                      <span>20 miles</span>
+                    </label>
+                  </p>
+                </form>
               </div>
               <!-- Travel Type -->
               <div class="col s4">
-              <form>
-                <p>
-                  <label>
-                    <input class="with-gap" name="travel-method" type="radio" data-travel="driving" value="driving" checked />
-                    <span>Driving</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input class="with-gap" name="travel-method" type="radio" data-travel="walking" value="walking"/>
-                    <span>Walking</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input class="with-gap" name="travel-method" type="radio" data-travel="bicycling" value="bicycling" />
-                    <span>Bicycling</span>
-                  </label>
-                </p>
-              </form>
+                <form>
+                  <p>
+                    <label>
+                      <input
+                        class="with-gap"
+                        name="travel-method"
+                        type="radio"
+                        data-travel="driving"
+                        value="driving"
+                        checked
+                      />
+                      <span>Driving</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input
+                        class="with-gap"
+                        name="travel-method"
+                        type="radio"
+                        data-travel="walking"
+                        value="walking"
+                      />
+                      <span>Walking</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input
+                        class="with-gap"
+                        name="travel-method"
+                        type="radio"
+                        data-travel="bicycling"
+                        value="bicycling"
+                      />
+                      <span>Bicycling</span>
+                    </label>
+                  </p>
+                </form>
               </div>
               <!-- Location Type -->
               <div class="col s4">
                 <form>
-                <p>
-                  <label>
-                    <input class="with-gap" name="location-type" type="radio" data-type="restaurant" value="restaurant" checked />
-                    <span>Restaurant</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input class="with-gap" name="location-type" type="radio"  data-type="point-of-interest" value="point-of-interest"/>
-                    <span>Point-of-interest</span>
-                  </label>
-                </p>
-              </form>
+                  <p>
+                    <label>
+                      <input
+                        class="with-gap"
+                        name="location-type"
+                        type="radio"
+                        data-type="restaurant"
+                        value="restaurant"
+                        checked
+                      />
+                      <span>Restaurant</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input
+                        class="with-gap"
+                        name="location-type"
+                        type="radio"
+                        data-type="point-of-interest"
+                        value="point-of-interest"
+                      />
+                      <span>Point-of-interest</span>
+                    </label>
+                  </p>
+                </form>
               </div>
-
             </div>
-              
-              <!-- Submit button -->
-              <div class="input-field">
-                <button class="btn waves-effect waves-light blue darken-2" type="button" id="submit">Submit</button>
-              </div>
 
+            <!-- Submit button -->
+            <div class="input-field">
+              <button
+                class="btn waves-effect waves-light blue darken-2"
+                type="button"
+                id="submit"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </section>
-
 
       <!-- MAP & RANDOM PLACE Container-->
       <div class="container map-place">
@@ -147,7 +219,11 @@
           <div class="col xl5 l12 m12 s12 valign-wrapper justify-content">
             <div class="card">
               <div class="card-content">
-                <div id="map-content"><img src="https://maps.googleapis.com/maps/api/staticmap?center=28.5241908,-81.3289289&amp;zoom=11&amp;size=480x480&amp;maptype=roadmap&amp;markers=color:green%7Clabel:Start%7C28.5241908,-81.3289289&amp;markers=color:red%7Clabel:Finish%7C28.5113721,-81.3748813&amp;key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"></div>
+                <div id="map-content">
+                  <img
+                    src="https://maps.googleapis.com/maps/api/staticmap?center=28.5241908,-81.3289289&amp;zoom=11&amp;size=480x480&amp;maptype=roadmap&amp;markers=color:green%7Clabel:Start%7C28.5241908,-81.3289289&amp;markers=color:red%7Clabel:Finish%7C28.5113721,-81.3748813&amp;key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg"
+                  />
+                </div>
                 <!-- <div></div> -->
               </div>
             </div>
@@ -158,37 +234,46 @@
             <div class="card">
               <div class="card-content place-content">
                 <div class="card-image">
-                  <h4 class="center-align" id="place-name">Fill out the form for a place!</h4>
-                  <div class="center-align"><i class="large material-icons" id="place-icon">add</i></div>
+                  <h4 class="center-align" id="place-name">
+                    Fill out the form for a place!
+                  </h4>
+                  <div class="center-align">
+                    <i class="large material-icons" id="place-icon">add</i>
+                  </div>
                 </div>
-                
-                
+
                 <!--- Table for info --->
                 <table>
                   <tbody>
                     <tr>
-                      <td>Address: </td>
+                      <td>Address:</td>
                       <td id="address-el"></td>
                     </tr>
                     <tr>
-                      <td>Distance: </td>
+                      <td>Distance:</td>
                       <td><span id="distance"></span></td>
                     </tr>
                     <tr>
-                      <td>Travel Time: </td>
+                      <td>Travel Time:</td>
                       <td><span id="travel-time"></span></td>
                     </tr>
                     <tr>
-                      <td>Status: </td>
+                      <td>Status:</td>
                       <td id="status-el"></td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="input-field">
-                  <br/>
-                  <button class="btn waves-effect waves-light blue accent-1" type="button" id="save-btn">Save Place</button>
+                  <br />
+                  <button
+                    class="btn waves-effect waves-light blue accent-1"
+                    type="button"
+                    id="save-btn"
+                  >
+                    Save Place
+                  </button>
                 </div>
-                
+
                 <!-------------->
               </div>
             </div>
@@ -200,87 +285,109 @@
       <div class="container">
         <div class="card-panel row blue-grey lighten-4" id="storage-row">
           <!-- ---------------START REMOVEABLE CONTENT --------------------------------------->
-            <!-- Dynamically add local storage card here -->
-            <div class="col xl2 l6 m12 s12">
-              <div class="card blue-grey">
-                <div class="card-content white-text">
-                  <span class="card-title">Place Name</span>
-                  <i class="material-icons">add</i>
-                  <p>1422 Fettler Way, Winter Garden FL 32787</p>
-                </div>
+          <!-- Dynamically add local storage card here -->
+          <div class="col xl2 l6 m12 s12">
+            <div class="card blue-grey">
+              <div class="card-content white-text">
+                <span class="card-title">Place Name</span>
+                <i class="material-icons">add</i>
+                <p>1422 Fettler Way, Winter Garden FL 32787</p>
               </div>
             </div>
+          </div>
 
-            <!-- Dynamically add local storage card here -->
-            <div class="col xl2 l6 m12 s12">
-              <div class="card blue-grey">
-                <div class="card-content white-text">
-                  <span class="card-title">Place Name</span>
-                  <i class="material-icons">add</i>
-                  <p>1422 Fettler Way, Winter Garden FL 32787</p>
-                </div>
+          <!-- Dynamically add local storage card here -->
+          <div class="col xl2 l6 m12 s12">
+            <div class="card blue-grey">
+              <div class="card-content white-text">
+                <span class="card-title">Place Name</span>
+                <i class="material-icons">add</i>
+                <p>1422 Fettler Way, Winter Garden FL 32787</p>
               </div>
             </div>
+          </div>
 
-            <!-- Dynamically add local storage card here -->
-            <div class="col xl2 l6 m12 s12">
-              <div class="card blue-grey">
-                <div class="card-content white-text">
-                  <span class="card-title">Place Name</span>
-                  <i class="material-icons">add</i>
-                  <p>1422 Fettler Way, Winter Garden FL 32787</p>
-                </div>
+          <!-- Dynamically add local storage card here -->
+          <div class="col xl2 l6 m12 s12">
+            <div class="card blue-grey">
+              <div class="card-content white-text">
+                <span class="card-title">Place Name</span>
+                <i class="material-icons">add</i>
+                <p>1422 Fettler Way, Winter Garden FL 32787</p>
               </div>
             </div>
+          </div>
 
-            <!-- Dynamically add local storage card here -->
-            <div class="col xl2 l6 m12 s12">
-              <div class="card blue-grey">
-                <div class="card-content white-text">
-                  <span class="card-title">Place Name</span>
-                  <i class="material-icons">add</i>
-                  <p>1422 Fettler Way, Winter Garden FL 32787</p>
-                </div>
+          <!-- Dynamically add local storage card here -->
+          <div class="col xl2 l6 m12 s12">
+            <div class="card blue-grey">
+              <div class="card-content white-text">
+                <span class="card-title">Place Name</span>
+                <i class="material-icons">add</i>
+                <p>1422 Fettler Way, Winter Garden FL 32787</p>
               </div>
             </div>
+          </div>
 
-            <!-- Dynamically add local storage card here -->
-            <div class="col xl2 l6 m12 s12">
-              <div class="card blue-grey">
-                <div class="card-content white-text">
-                  <span class="card-title">Place Name</span>
-                  <i class="material-icons">add</i>
-                  <p>1422 Fettler Way, Winter Garden FL 32787</p>
-                </div>
+          <!-- Dynamically add local storage card here -->
+          <div class="col xl2 l6 m12 s12">
+            <div class="card blue-grey">
+              <div class="card-content white-text">
+                <span class="card-title">Place Name</span>
+                <i class="material-icons">add</i>
+                <p>1422 Fettler Way, Winter Garden FL 32787</p>
               </div>
             </div>
+          </div>
 
-      <!-- END REMOVEABLE CONTENT --------------------------------------->
-
+          <!-- END REMOVEABLE CONTENT --------------------------------------->
         </div>
       </div>
-
     </main>
 
     <footer class="page-footer blue darken-2">
       <div class="container">
         <div class="row">
-            <h5 class="white-text">Geographic Randomizer</h5>
+          <h5 class="white-text">Geographic Randomizer</h5>
         </div>
       </div>
 
       <div class="footer-copyright">
         <div class="container">
-        © 2021 This website is made for student & educational purposes only.
-        <a class="grey-text text-lighten-4 right" href="https://github.com/ShaeonA" target="_blank">Shaeon Adams</a>
-        <a class="grey-text text-lighten-4 right" href="https://github.com/kdombrosky"target="_blank">Kayla Dombrosky</a>
-        <a class="grey-text text-lighten-4 right" href="https://github.com/carlinjshaw" target="_blank">Carlin Shaw</a>
-        <a class="grey-text text-lighten-4 right" href="https://github.com/odupree1988" target="_blank">Owen Dupree</a>
-        <a class="grey-text text-lighten-4 right" href="https://github.com/Aswebilius" target="_blank">Austin Awebilius</a>
+          © 2021 This website is made for student & educational purposes only.
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://github.com/ShaeonA"
+            target="_blank"
+            >Shaeon Adams</a
+          >
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://github.com/kdombrosky"
+            target="_blank"
+            >Kayla Dombrosky</a
+          >
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://github.com/carlinjshaw"
+            target="_blank"
+            >Carlin Shaw</a
+          >
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://github.com/odupree1988"
+            target="_blank"
+            >Owen Dupree</a
+          >
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://github.com/Aswebilius"
+            target="_blank"
+            >Austin Awebilius</a
+          >
         </div>
       </div>
     </footer>
-    
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
