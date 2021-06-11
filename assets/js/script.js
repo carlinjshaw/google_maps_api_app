@@ -1,14 +1,7 @@
 var savedUserInput = [];
 var userLocation = {};
-// DOM Elements
-// var placeNameEl = document.querySelector("#place-name");
+
 var imgEl = document.querySelector("#img-el");
-// var addressEl = document.querySelector("#address-el");
-// var distanceEl = document.querySelector("#distance");
-// var timeEl = document.querySelector("#travel-time");
-// var statusEl = document.querySelector("#status-el");
-// var mapEl = document.querySelector("#map-content");
-// var iconEl = document.querySelector("#place-icon")
 var storedPlacesEl = document.querySelector("#storage-row");
 
 function updateLocalStorage(key, data) {
@@ -59,89 +52,38 @@ var displayContent = function (placeObject, infObject) {
   console.log(placeObject.type);
   if (placeObject.type === "restaurant") {
     $("#place-icon").text("local_dining");
-    // iconEl.innerText = "local_dining";
+    $("#place-icon").removeClass("red-text").addClass("black-text")
   }
   if (placeObject.type === "point-of-interest") {
     $("#place-icon").text("room");
-    // iconEl.innerText = "room";
-    $("#place-icon").addClass("large material-icons red-text");
-    // iconEl.className = "large material-icons red-text"
+    $("#place-icon").removeClass("black-text").addClass("large material-icons red-text");
   }
 };
 
 // display map
-var fetchStatic = function (
-  ranLocation,
-  locationObject,
-  zoomValue
-  // originLat,
-  // originLon,
-  // zoomValue,
-  // destinationLat,
-  // destinationLon
-) {
+var fetchStatic = function (ranLocation, locationObject, zoomValue) {
   var staticUrl =
     "https://maps.googleapis.com/maps/api/staticmap?center=" +
     locationObject.lat +
-    // originLat +
     "," +
     locationObject.lon +
-    // originLon +
     "&zoom=" +
     zoomValue +
     "&size=480x480&maptype=roadmap&markers=color:green%7Clabel:Start%7C" +
     locationObject.lat +
-    // originLat +
     "," +
     locationObject.lon +
-    // originLon +
     "&markers=color:red%7Clabel:Finish%7C" +
     ranLocation.lat +
-    // destinationLat +
     "," +
     ranLocation.lng +
-    // destinationLon +
     "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg";
   console.log(staticUrl);
   $("#map-content").html("<img src='" + staticUrl + "'/ >");
 };
 
-// fetch photo from places
-// var photoFetch = function (photoRef) {
-//   fetch(
-//     "https://api.allorigins.win/raw?url=" +
-//       encodeURIComponent(
-//         "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" +
-//           "CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU" +
-//           "&key=AIzaSyBNemHqQ_a0mlEfgAo0C2IZN3hwCYT4RDo"
-//       )
-//   )
-//     .then(function (response) {
-//       if (response.ok) {
-//         response.json().then(function (data) {
-//           console.log(data);
-//         });
-//       } else {
-//         alert("Error: " + response.statusText);
-//       }
-//     })
-//     .catch(function (error) {
-//       alert("Unable to connect");
-//     });
-// };
-
 // DISTANCE MATRIX API
-function distanceMatrixApi(
-  ranLocation,
-  locationObject,
-  placeObject
-  // locationLat,
-  // locationLng,
-  // userLat,
-  // userLon,
-  // userMethod,
-  // placeObject
-) {
+function distanceMatrixApi(ranLocation, locationObject, placeObject) {
   fetch(
     "https://api.allorigins.win/raw?url=" +
       encodeURIComponent(
@@ -230,13 +172,9 @@ function placesApi(locationObject) {
             name: randomResults.name,
             id: randomResults.place_id,
             address: randomResults.vicinity,
-            //photo: randomResults.photos[0].photo_reference,
             status: randomResults.opening_hours.open_now,
             type: locationObject.destination,
           };
-
-          // send photo ref to get photo
-          //photoFetch(placeObject.photo);
 
           var locationLat = randomResults.geometry.location.lat;
           var locationLng = randomResults.geometry.location.lng;
