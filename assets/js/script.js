@@ -52,11 +52,13 @@ var displayContent = function (placeObject, infObject) {
   console.log(placeObject.type);
   if (placeObject.type === "restaurant") {
     $("#place-icon").text("local_dining");
-    $("#place-icon").removeClass("red-text").addClass("black-text")
+    $("#place-icon").removeClass("red-text").addClass("black-text");
   }
   if (placeObject.type === "point-of-interest") {
     $("#place-icon").text("room");
-    $("#place-icon").removeClass("black-text").addClass("large material-icons red-text");
+    $("#place-icon")
+      .removeClass("black-text")
+      .addClass("large material-icons red-text");
   }
 };
 
@@ -267,3 +269,7 @@ thirdCard.appendChild(cardAddress);
 secondCard.appendChild(thirdCard);
 outerCard.appendChild(secondCard);
 storedPlacesEl.appendChild(outerCard);
+
+$(document).ready(function () {
+  $(".sidenav").sidenav();
+});
