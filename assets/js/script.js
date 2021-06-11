@@ -1,7 +1,6 @@
 var savedUserInput = [];
 var userLocation = {};
 
-var imgEl = document.querySelector("#img-el");
 var storedPlacesEl = document.querySelector("#storage-row");
 
 function updateLocalStorage(key, data) {
