@@ -13,9 +13,7 @@ function checkHistory() {
   var localHistory = localStorage.getItem("history");
   if (localHistory != null) {
     savedUserInput = JSON.parse(localHistory);
-    console.log(localHistory);
     $.each(savedUserInput, function (key, data) {
-      console.log(key, data);
       generateSavedItem(data);
     });
     return true;
@@ -34,7 +32,6 @@ var displayContent = function (placeObject, infObject) {
   } else {
     $("#status-el").text("Closed");
   }
-  console.log(placeObject.type);
   if (placeObject.type === "restaurant") {
     $("#place-icon").text("local_dining");
     $("#place-icon").removeClass("red-text").addClass("black-text");
@@ -50,12 +47,12 @@ var displayContent = function (placeObject, infObject) {
 function generateSavedItem(data) {
   var outerCard = document.createElement("div");
   outerCard.className = "col xl2 l6 m12 s12 storageItem";
-  outerCard.dataset.time = data.time
-  outerCard.dataset.status = data.status
-  outerCard.dataset.name = data.name
-  outerCard.dataset.distance = data.distance
-  outerCard.dataset.address = data.address
-  outerCard.dataset.type = data.type
+  outerCard.dataset.time = data.time;
+  outerCard.dataset.status = data.status;
+  outerCard.dataset.name = data.name;
+  outerCard.dataset.distance = data.distance;
+  outerCard.dataset.address = data.address;
+  outerCard.dataset.type = data.type;
   var secondCard = document.createElement("div");
   secondCard.className = "card blue-grey";
   var thirdCard = document.createElement("div");
@@ -65,7 +62,7 @@ function generateSavedItem(data) {
   cardTitle.innerText = data.name;
   var cardIcon = document.createElement("i");
   cardIcon.className = "material-icons";
-  console.log(data.type);
+
   if (data.type === "point-of-interest") {
     cardIcon.innerHTML = "place";
   } else if (data.type === "restaurant") {
@@ -100,7 +97,7 @@ var fetchStatic = function (ranLocation, locationObject, zoomValue) {
     "," +
     ranLocation.lng +
     "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg";
-  console.log(staticUrl);
+
   $("#map-content").html("<img src='" + staticUrl + "'/ >");
 };
 
@@ -176,11 +173,10 @@ $("#save-btn").on("click", function (e) {
     lastSearchedItem.hasSaved = true;
 
     savedUserInput.push(storedObj);
-    console.log(savedUserInput, storedObj);
+
     updateLocalStorage("history", JSON.stringify(savedUserInput));
     generateSavedItem(storedObj);
   }
-  console.log(lastSearchedItem);
 });
 
 // PLACES API Function
@@ -204,7 +200,6 @@ function placesApi(locationObject) {
         response.json().then(function (data) {
           var randomResults =
             data.results[Math.floor(Math.random() * data.results.length)];
-          console.log(randomResults);
 
           // create obj to send to distanceMatrix()
           var placeObject = {
@@ -286,10 +281,9 @@ $("#submit").on("click", function (e) {
 });
 
 $("#storage-row").on("click", ".storageItem", function (e) {
-  var $this = $(this)
-  console.log($this.data())
-  displayContent($this.data(), $this.data())
-  });
+  var $this = $(this);
+  displayContent($this.data(), $this.data());
+});
 
 $(document).ready(function () {
   $(".sidenav").sidenav();
