@@ -1,7 +1,7 @@
 let userLocation = {};
 var savedUserInput = [];
 let lastSearchedItem = {};
-lastSearchedItem.hasSaved = false;
+var lastSearchedMap = (lastSearchedItem.hasSaved = false);
 
 var storedPlacesEl = document.querySelector("#storage-row");
 
@@ -22,11 +22,13 @@ function checkHistory() {
 }
 
 // function to display content to page
-var displayContent = function (placeObject, infObject) {
+function displayContent(placeObject, infObject) {
   $("#place-name").text(placeObject.name);
   $("#address-el").text(placeObject.address);
   $("#distance").text(infObject.distance);
   $("#travel-time").text(infObject.time);
+  // $("#map-content").html("<img src='" + placeObject.map + "'/ >");
+
   if (placeObject.status) {
     $("#status-el").text("Open Now");
   } else {
@@ -42,7 +44,11 @@ var displayContent = function (placeObject, infObject) {
       .removeClass("black-text")
       .addClass("large material-icons red-text");
   }
-};
+}
+
+function displaySavedMap(data) {
+  $("#map-content").html("<img src='" + data.map + "'/ >");
+}
 
 function generateSavedItem(data) {
   var outerCard = document.createElement("div");
@@ -53,6 +59,7 @@ function generateSavedItem(data) {
   outerCard.dataset.distance = data.distance;
   outerCard.dataset.address = data.address;
   outerCard.dataset.type = data.type;
+  outerCard.dataset.map = data.map;
   var secondCard = document.createElement("div");
   secondCard.className = "card blue-grey";
   var thirdCard = document.createElement("div");
@@ -80,7 +87,7 @@ function generateSavedItem(data) {
 }
 
 // display map
-var fetchStatic = function (ranLocation, locationObject, zoomValue) {
+function fetchStatic(ranLocation, locationObject, zoomValue) {
   var staticUrl =
     "https://maps.googleapis.com/maps/api/staticmap?center=" +
     locationObject.lat +
@@ -98,6 +105,7 @@ var fetchStatic = function (ranLocation, locationObject, zoomValue) {
     ranLocation.lng +
     "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg";
 
+  lastSearchedMap = staticUrl;
   $("#map-content").html("<img src='" + staticUrl + "'/ >");
 };
 
@@ -170,6 +178,7 @@ $("#save-btn").on("click", function (e) {
     storedObj.type = lastSearchedItem.type;
     storedObj.time = lastSearchedItem.time;
     storedObj.status = lastSearchedItem.status;
+    storedObj.map = lastSearchedMap;
     lastSearchedItem.hasSaved = true;
 
     savedUserInput.push(storedObj);
@@ -283,6 +292,7 @@ $("#submit").on("click", function (e) {
 $("#storage-row").on("click", ".storageItem", function (e) {
   var $this = $(this);
   displayContent($this.data(), $this.data());
+  displaySavedMap($this.data());
 });
 
 $(document).ready(function () {
