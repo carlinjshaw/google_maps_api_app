@@ -43,3 +43,34 @@ h5 {
 .brand-logo {
   width: fit-content;
 }
+
+
+
+/* Media Query */
+@media only screen and (max-width: 1400px) {
+  #map-content img {
+    width: 420px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #map-content img {
+    width: 450px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  #map-content img {
+    width: 350px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  #map-content img {
+    width: 280px;
+    height: auto;
+  }
+}

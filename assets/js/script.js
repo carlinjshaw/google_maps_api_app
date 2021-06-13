@@ -7,6 +7,9 @@ var storedPlacesEl = document.querySelector("#storage-row");
 
 function updateLocalStorage(key, data) {
   localStorage.setItem(key, data);
+  console.log("break");
+  var localTest = localStorage.getItem("history");
+  console.log(JSON.parse(localTest));
 }
 
 function checkHistory() {
@@ -52,7 +55,7 @@ function displaySavedMap(data) {
 
 function generateSavedItem(data) {
   var outerCard = document.createElement("div");
-  outerCard.className = "col xl2 l6 m12 s12 storageItem";
+  outerCard.className = "col xl3 l6 m12 s12 storageItem";
   outerCard.dataset.time = data.time;
   outerCard.dataset.status = data.status;
   outerCard.dataset.name = data.name;
@@ -236,7 +239,7 @@ function placesApi(locationObject) {
     });
 }
 
-//user location
+// on click for user location
 $("#location-btn").on("click", function (e) {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function (response) {
@@ -289,12 +292,14 @@ $("#submit").on("click", function (e) {
   });
 });
 
+// on click save button for storage 
 $("#storage-row").on("click", ".storageItem", function (e) {
   var $this = $(this);
   displayContent($this.data(), $this.data());
   displaySavedMap($this.data());
 });
 
+// on click side nav bar 
 $(document).ready(function () {
   $(".sidenav").sidenav();
   checkHistory();
