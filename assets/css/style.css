@@ -4,8 +4,15 @@
   box-sizing: border-box;
 }
 
-#submit, #location-btn, #save-btn {
+#submit,
+#location-btn,
+#save-btn {
   width: 100%;
+}
+
+.justify-content {
+  align-content: center;
+  justify-content: center;
 }
 
 .flex {
@@ -33,4 +40,6 @@ h5 {
   margin: 0;
 }
 
-
+.brand-logo {
+  width: fit-content;
+}
