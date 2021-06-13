@@ -13,6 +13,9 @@ var storedPlacesEl = document.querySelector("#storage-row");
 
 function updateLocalStorage(key, data) {
   localStorage.setItem(key, data);
+  console.log("break");
+  var localTest = localStorage.getItem("history");
+  console.log(JSON.parse(localTest));
 }
 
 function checkHistory() {
@@ -25,25 +28,32 @@ function checkHistory() {
   return false;
 }
 
-// LOCAL STORAGE function
-// function checkStorage(key, savedUserInput, storedObj) {
-//     var localHistory = localStorage.getItem("history");
-//     if (localHistory != null) {
-//     locationHistory = JSON.parse(localHistory);
-//     console.log(localHistory);
-//     return true;
-//     }
-//     else {
-//         localHistory = [];
-//     }
+//LOCAL STORAGE function - run immediately on page load ****************************** ******************************************************************************************
+// if empty 
+// if not empty load cards at bottom 
+function checkStorage(key, savedUserInput, storedObj) {
+    var localHistory = localStorage.getItem("history");
+    localHistory = JSON.parse(localHistory);
+    if (!localHistory ||localHistory.length === 0) {
+    //if (localHistory || localHistory.length > 0) {
+    localHistory = [];
+    console.log(localHistory); 
+    }
+    else {
+        console.log(localHistory);
+    }
 
-//     localHistory.push(storedObj);
-//     console.log(localHistory);
+    // MOVE TO UPDATELOCAL STORAGE - separate function 
+    // local stoage should save on click, local storage should be checked on page load 
+    localHistory.push(storedObj);
+    console.log(localHistory);
 
-//     localStorage.setItem("history",  JSON.stringify(localHistory));
-//     console.log("we made it");
-//     console.log(localStorage);
-// }
+    localStorage.setItem("history",  JSON.stringify(localHistory));
+    console.log("we made it");
+    console.log(localStorage);
+}
+
+
 
 // function to display content to page
 var displayContent = function (placeObject, infObject) {
@@ -56,7 +66,6 @@ var displayContent = function (placeObject, infObject) {
   } else {
     statusEl.innerText = "Closed";
     }
-    console.log(placeObject.type);
     if(placeObject.type === "restaurant") {
         iconEl.innerText = "local_dining";
         if(iconEl.classList.contains("red-text")) {
@@ -93,7 +102,6 @@ var fetchStatic = function (
     "," +
     destinationLon +
     "&key=AIzaSyA76IoInowLeKlfuTlf0yYHVH95eZAz4mg";
-  console.log(staticUrl);
   mapEl.innerHTML = "<img src='" + staticUrl + "'/ >";
 };
 
@@ -169,8 +177,9 @@ function distanceMatrixApi(
                 storedObj.address = placeObject.address;
                 storedObj.distance = infObject.distance;
                 storedObj.method = userMethod;
-
                 savedUserInput.push(storedObj);
+
+                // run local storage set logic HERE 
                 updateLocalStorage("history", JSON.stringify(savedUserInput));
             })
             
@@ -217,7 +226,6 @@ function placesApi(
         response.json().then(function (data) {
           var randomResults =
             data.results[Math.floor(Math.random() * data.results.length)];
-          console.log(randomResults);
 
           // create obj to send to distanceMatrix()
           var placeObject = {
