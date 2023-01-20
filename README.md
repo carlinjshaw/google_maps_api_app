@@ -21,7 +21,6 @@ THEN I am presented with past locations I have searched <br/>
 WHEN I select a past location <br/>
 THEN I am presented with distance and drive time information again <br/>
 
-## Link to live site: 
 
 ![image](https://user-images.githubusercontent.com/82618604/121559286-73f38e00-c9e4-11eb-8a71-593ccadb1936.png)
 
